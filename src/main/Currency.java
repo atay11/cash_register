@@ -1,3 +1,5 @@
+package cashregister;
+
 public enum Currency {
     PENNY (0.01),
     NICKEL (0.05),
@@ -10,7 +12,10 @@ public enum Currency {
     FIFTY (50.00),
     ONE_HUNDRED (100.00);
 
+    private double value;
+
     Currency(double v) {
+        this.value = v;
 
     }
 }

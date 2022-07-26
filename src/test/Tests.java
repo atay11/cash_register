@@ -1,9 +1,6 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.Currency;
-import java.util.Set;
-
 
 public class Tests {
     @Test
@@ -18,7 +15,13 @@ public class Tests {
 
     @Test void canAccessSrcMain()
     {
-        Set x = Currency.getAvailableCurrencies();
+        cashregister.Currency g;
+//        Set x =  Curre
+//        for(Object v:x
+//             ) {
+//            System.out.println(v.toString());
+//
+//        }
     }
 
 }
