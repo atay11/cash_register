@@ -1,4 +1,3 @@
-package cashregister;
 
 public enum Currency {
     PENNY (0.01),

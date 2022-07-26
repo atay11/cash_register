@@ -15,7 +15,7 @@ public class Tests {
 
     @Test void canAccessSrcMain()
     {
-        cashregister.Currency g;
+        Currency g;
 //        Set x =  Curre
 //        for(Object v:x
 //             ) {
