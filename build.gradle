@@ -1,0 +1,57 @@
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+group 'com'
+
+sourceCompatibility = 1.8
+
+repositories {
+    maven {
+
+        url 'https://artifactory.neovest.com/artifactory/ut-maven-java'
+    }
+
+    maven {
+
+        url 'https://artifactory.neovest.com/artifactory/jcenter-cache'
+    }
+}
+
+
+
+
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+}
+
+
+
+dependencies {
+
+    implementation  'org.testng:testng:6.9.10'
+}
+
+compileTestJava {
+    options.compilerArgs += '-proc:none'
+}
+
+test {
+    useTestNG()
+}
+
+compileJava {
+    options.compilerArgs += [
+            '-proc:none',
+    ]
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'CashRegister'
+    }
+}
