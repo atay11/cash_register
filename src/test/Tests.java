@@ -106,4 +106,13 @@ public class Tests {
         Assert.assertEquals(output1, "$2586.41 (1 PENNY, 1 NICKEL, 1 DIME, 1 QUARTER, 1 ONE, 1 FIVE, 1 TEN, 1 TWENTY, 1 FIFTY, 25 ONE HUNDRED)");
     }
 
+    @Test
+    public void testRenderDollarAmount() {
+        Assert.assertEquals(CashRegister.renderDollarAmount(0), "$0.00");
+        Assert.assertEquals(CashRegister.renderDollarAmount(-1), "$-0.01");
+        Assert.assertEquals(CashRegister.renderDollarAmount(10), "$0.10");
+        Assert.assertEquals(CashRegister.renderDollarAmount(3654), "$36.54");
+        Assert.assertEquals(CashRegister.renderDollarAmount(-12345), "$-123.45");
+    }
+
 }

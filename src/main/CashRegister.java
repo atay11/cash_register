@@ -4,6 +4,21 @@ public class CashRegister {
     // to build C:\gradle-7.5\bin\gradle.bat build
     // to run java -cp .\build\libs\cash_register.jar CashRegister 5 6
 
+    static public String renderDollarAmount(int v)
+    {
+        String ret = "$";
+        if(v < 0)
+        {
+            ret += "-";
+            v*=-1;
+        }
+        ret += "" + (v/100) + ".";
+        v%=100;
+        ret+="" + (v/10);
+        ret+="" + (v%10);
+        return ret;
+    }
+
     static private String help = "To execute command type java -cp .\\build\\libs\\cash_register.jar CashRegister <total_due> <cash_received>\n"
             +"Substitute in the total due, cash received and correct directory for the jar file.";
     static private String invalid_input_help = "Invalid Input Detected\n"+help;
@@ -17,7 +32,11 @@ public class CashRegister {
     {
         if(due < 0 || received < 0)
             throw new IllegalArgumentException("Negative numbers not allowed.");
-        return "processingPayment";
+        if(due == received)
+            return renderDollarAmount(0);
+        if(due > received)
+            return renderDollarAmount(received - due) + " Due";
+        return "";
     }
 
     public static String processInput(String[] input)
