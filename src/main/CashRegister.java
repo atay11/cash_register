@@ -1,19 +1,17 @@
 
 public class CashRegister {
 
-
     // to build C:\gradle-7.5\bin\gradle.bat build
     // to run java -cp .\build\libs\cash_register.jar CashRegister 5 6
 
-    static private String help = "To execute command type java -cp .\\build\\libs\\cash_register.jar CashRegister {Amount Due} {Amount Received}\n"
-            +"Substitute in the amount due, amount received and correct directory for the jar file.";
+    static private String help = "To execute command type java -cp .\\build\\libs\\cash_register.jar CashRegister <total_due> <cash_received>\n"
+            +"Substitute in the total due, cash received and correct directory for the jar file.";
     static private String invalid_input_help = "Invalid Input Detected\n"+help;
 
     public static boolean isDollarAmount(String s)
     {
         return s.matches("\\d+") || s.matches("\\d+\\.\\d\\d");
     }
-
 
     public static String processPayment(int due, int received)
     {
@@ -41,7 +39,7 @@ public class CashRegister {
 
             // length requirement is to prevent overflow
 
-            if(v1.matches("\\d+\\.\\d\\d") && v2.matches("\\d+\\.\\d\\d") && v2.length() < 10 && v1.length() < 10)
+            if(v1.matches("\\d+\\.\\d\\d") && v2.matches("\\d+\\.\\d\\d") && v2.length() < 11 && v1.length() < 11)
             {
                 v1 = v1.replace(".","");
                 v2 = v2.replace(".","");
@@ -52,7 +50,6 @@ public class CashRegister {
         }
         return invalid_input_help;
     }
-
 
     public static void main(String[] args)
     {
