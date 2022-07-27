@@ -10,7 +10,6 @@ public class Tests {
         return CashRegister.processInput(vals);
     }
 
-
     @DataProvider
     public Object[][] validOrInvalid(){
         return new Object[][]{
@@ -46,6 +45,12 @@ public class Tests {
         Assert.assertTrue(output.contains(help));
     }
 
+    @Test
+    public void testHelpParamShowsHelpAndNoError() {
+        String output = grabOutput("--help");
+        Assert.assertFalse(output.contains(inv));
+        Assert.assertTrue(output.contains(help));
+    }
 
     @Test(expectedExceptions = { IllegalArgumentException.class })
     public void testNegativeDueThrowsException() {
