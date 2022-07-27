@@ -15,13 +15,10 @@ public class Tests {
 
     @Test void canAccessSrcMain()
     {
-        Currency g;
-//        Set x =  Curre
-//        for(Object v:x
-//             ) {
-//            System.out.println(v.toString());
-//
-//        }
+        for (Currency
+                v : Currency.values()) {
+            System.out.println(v.name() + " " + v.amount());
+        }
     }
 
 }

@@ -12,6 +12,10 @@ public enum Currency {
     ONE_HUNDRED (100.00);
 
     private double value;
+    public double amount()
+    {
+        return value;
+    }
 
     Currency(double v) {
         this.value = v;

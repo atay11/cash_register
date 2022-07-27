@@ -49,3 +49,9 @@ compileJava {
             '-proc:none',
     ]
 }
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'CashRegister'
+    }
+}
