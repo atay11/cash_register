@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 
 public class CashRegister {
 
@@ -36,7 +37,24 @@ public class CashRegister {
             return renderDollarAmount(0);
         if(due > received)
             return renderDollarAmount(received - due) + " Due";
-        return "";
+        int amt = received - due;
+        String ret = renderDollarAmount(amt) + " (";
+        Currency[] denominations = Currency.values();
+        LinkedList<String> items = new LinkedList<String>();
+        for(int i=denominations.length-1;i>=0;i--){
+            Currency v = denominations[i];
+            String name = v.name().replace('_', ' ');
+            int val = (int)(v.amount()*100.0);
+            int tot = amt / val;
+            if(tot < 1)
+                continue;
+            items.addFirst("" + tot + " " + name);
+            amt %= val;
+        }
+
+        ret += String.join(", ", items) + ")";
+
+        return ret;
     }
 
     public static String processInput(String[] input)
